@@ -42,6 +42,35 @@
 	
 
 }
+#gamelinks {
+  width: inherit;
+  height: 30px;
+  padding: 30px;  
+  border: 10px solid lightblue;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  margin:auto auto;
+}
+
+#gamelinks #replayBtn {
+	border: 1px ridge orange;
+	border-radius:25px;
+	background:lightyellow;
+	padding:10px;
+	text-align:center;
+	
+}
+#gamelinks #replayBtn:hover {
+	border: 3px ridge orange;
+}
+
+.hideEl {
+	visibility:hidden;
+}
+
+
+
+
 
 .footer{
 	

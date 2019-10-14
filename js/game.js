@@ -46,6 +46,8 @@ function cardClicked(elCard) {
             // All cards flipped!
             if (TOTAL_COUPLES_COUNT === flippedCouplesCount) {
                 audioWin.play();
+               	document.getElementById("replayBtn").classList.remove("hideEl");
+                
             }
 
         }
@@ -53,4 +55,24 @@ function cardClicked(elCard) {
     }
 
 
+}
+
+
+
+function hideEl(elID) {
+	document.getElementById(elID).classList.add("hideEl");
+}
+
+function resetGame(){
+	//reset vars
+	elPreviousCard = null;
+	flippedCouplesCount = 0;
+	//reset cards elem
+	var flippedCards = document.getElementsByClassName("flipped").length;
+	for (i=0;i<flippedCards;i++){
+			document.getElementsByClassName("flipped")[0].classList.remove("flipped");
+	}
+	//reset btn elem disapear btn replay
+	hideEl("replayBtn");
+	
 }
