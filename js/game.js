@@ -199,6 +199,15 @@ function showBestTime(){
 	}
 }
 
+function shuffle(){
+	var board=document.querySelector('.cardsContainer');
+	for(var i=board.children.length;i>=0;i--){
+		board.appendChild(board.children[Math.random() * i | 0]);
+	}
+}
+
+
+
 
 
 
