@@ -28,13 +28,15 @@ function cardClicked(elCard) {
         // get the data-card attribute's value from both cards
         var card1 = elPreviousCard.getAttribute('data-card');
         var card2 = elCard.getAttribute('data-card');
-
+        // disable click more cards
+		cardsClickDisable();
         // No match, schedule to flip them back in 1 second
         if (card1 !== card2){
             setTimeout(function () {
                 elCard.classList.remove('flipped');
                 elPreviousCard.classList.remove('flipped');
                 elPreviousCard = null;
+                cardsClickEnable();
             }, 1000)
 			audioWrong.play();
         } else {
@@ -42,6 +44,7 @@ function cardClicked(elCard) {
             flippedCouplesCount++;
             elPreviousCard = null;
             audioRight.play();
+            cardsClickEnable();
 
             // All cards flipped!
             if (TOTAL_COUPLES_COUNT === flippedCouplesCount) {
@@ -75,4 +78,20 @@ function resetGame(){
 	//reset btn elem disapear btn replay
 	hideEl("replayBtn");
 	
+}
+
+function cardsClickDisable(){
+	var cards = document.getElementsByClassName("card");
+	for (i=0;i<cards.length;i++){
+		cards[i].removeAttribute("onclick");
+	}
+	
+}
+
+function cardsClickEnable(){
+	var cards = document.getElementsByClassName("card");
+	for (i=0;i<cards.length;i++){
+		cards[i].setAttribute("onclick","cardClicked(this)");
+
+	}
 }
