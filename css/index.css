@@ -1,0 +1,51 @@
+* { 
+	dir:ltr;
+	font-size:16px;
+	text-align:center;
+
+}
+
+div {
+
+}
+h1{
+  text-shadow: 2px 2px darkblue;
+  color:green;
+  font-size:35px;
+
+}
+h2 { background: lightyellow; }
+a{
+	cursor:pointer;
+	color: brown;
+	text-decoration:none;
+	font-size:inherit;
+	transition:font-size 2s;
+}
+a:hover{
+	cursor:pointer;
+	transform:scale(1.10);
+	text-decoration:underline;
+	font-size:20px;
+}
+img.myimg {
+width:350px;
+border-radius: 25px;
+
+
+}
+
+table {
+	text-align:center;
+	margin: auto;
+	border: 1px solid gray;
+	padding:10px;
+	font-size:25px;
+
+}
+table td {
+	font-size: 18px;
+	width:250px;
+	height:60px;
+}
+

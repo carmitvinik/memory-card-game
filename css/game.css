@@ -30,7 +30,7 @@
 
 .cardsContainer{
 	box-sizing: content-box;  
-  width: 90%;
+  width: inherit;
   height: 165px;
   padding: 30px;  
   border: 10px solid blue;
