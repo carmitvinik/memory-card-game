@@ -9,6 +9,10 @@ var TOTAL_COUPLES_COUNT = 3;
 var audioWin = new Audio('sound/win.mp3');
 var audioRight = new Audio('sound/right.mp3');
 var audioWrong = new Audio('sound/wrong.mp3');
+// localStorage vars
+var playerRef = "playerName";
+var playerName= "Guest";
+var bestPlayerRef = "bestPlayer";
 
 // This function is called whenever the user click a card
 function cardClicked(elCard) {
@@ -93,5 +97,17 @@ function cardsClickEnable(){
 	for (i=0;i<cards.length;i++){
 		cards[i].setAttribute("onclick","cardClicked(this)");
 
+	}
+}
+
+function changeUser(){
+	un=prompt("Please Type Player Name:","Guest");
+	if (un === null) {
+		return false;	
+	} else {
+		localStorage.setItem(playerRef,un);
+		playerName=un;
+		document.getElementById("himsg").innerHTML="Hi "+playerName;
+		return true;
 	}
 }

@@ -58,6 +58,7 @@
 	background:lightyellow;
 	padding:10px;
 	text-align:center;
+	width:200px;
 	
 }
 #gamelinks #replayBtn:hover {
@@ -66,6 +67,20 @@
 
 .hideEl {
 	visibility:hidden;
+}
+#himsg{
+	font-size:35px;
+}
+
+#changeUser{
+	font-size:15px;
+	text-align:right;
+}
+
+#changeUser:hover{
+	color: darkblue;
+	cursor:pointer;
+	font-size:20px;
 }
 
 
