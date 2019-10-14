@@ -27,3 +27,22 @@
 .flipped .back {
     display: none;
 }
+
+.cardsContainer{
+	box-sizing: content-box;  
+  width: 90%;
+  height: 165px;
+  padding: 30px;  
+  border: 10px solid blue;
+  display:grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    margin:auto auto;
+
+
+	
+
+}
+
+.footer{
+	
+}
