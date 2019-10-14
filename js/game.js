@@ -7,6 +7,8 @@ var TOTAL_COUPLES_COUNT = 3;
 
 // Load an audio file
 var audioWin = new Audio('sound/win.mp3');
+var audioRight = new Audio('sound/right.mp3');
+var audioWrong = new Audio('sound/wrong.mp3');
 
 // This function is called whenever the user click a card
 function cardClicked(elCard) {
@@ -34,11 +36,12 @@ function cardClicked(elCard) {
                 elPreviousCard.classList.remove('flipped');
                 elPreviousCard = null;
             }, 1000)
-
+			audioWrong.play();
         } else {
             // Yes! a match!
             flippedCouplesCount++;
             elPreviousCard = null;
+            audioRight.play();
 
             // All cards flipped!
             if (TOTAL_COUPLES_COUNT === flippedCouplesCount) {
