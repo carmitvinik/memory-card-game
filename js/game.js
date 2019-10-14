@@ -17,9 +17,13 @@ var bestPlayerRef = "bestPlayer";
 
 // Timer Issue
 var timerStatus = null; //on off interval ref
-var milisecStat = 0; // 100 timestamps 
+var milisecStat = 0; // 10 timestamps 
 var secondsStat = 0; // 1000 timestamps
-var minutesStat = 0;
+var minutesStat = 0; // 60000 
+var timeUnitAmt = 0; //milisec amount for local storage
+var bestTimeTxt = null; // time format in local storage
+var bestTimeRef = "bestTime";
+var bestTimeAmtRef = "bestTimeAmt";
 
 // This function is called whenever the user click a card
 function cardClicked(elCard) {
@@ -65,6 +69,8 @@ function cardClicked(elCard) {
                 audioWin.play();
                	document.getElementById("replayBtn").classList.remove("hideEl");
                	stopTimer();
+               	bestTimeTxt=timerText(minutesStat,secondsStat,milisecStat);
+               	bestTimeAssign();
                 
             }
 
@@ -90,6 +96,8 @@ function startTimer(){
 			milisecStat=0;
 		}
 		document.getElementById("timer").innerHTML=	timerText(minutesStat,secondsStat,milisecStat);
+		timeUnitAmt++;
+
 	},10);
 
 }
@@ -120,6 +128,7 @@ function resetGame(){
 	milisecStat = 0; // 100 timestamps 
 	secondsStat = 0; // 1000 timestamps
 	minutesStat = 0;
+	timeUnitAmt = 0;
 	document.getElementById("timer").innerHTML=	timerText(minutesStat,secondsStat,milisecStat);
 
 	
@@ -168,6 +177,28 @@ function timerText(minutes,seconds,miliseconds){
 	return txt;
 
 }
+
+function bestTimeAssign(){
+	localStorageBestTime = localStorage.getItem(bestTimeAmtRef);
+	if ( localStorageBestTime == null ) {
+			localStorage.setItem(bestTimeAmtRef,timeUnitAmt);
+			localStorage.setItem(bestTimeRef,bestTimeTxt);
+	} else {
+		if (localStorageBestTime > timeUnitAmt){
+			localStorage.setItem(bestTimeAmtRef,timeUnitAmt);
+			localStorage.setItem(bestTimeRef,bestTimeTxt);
+		}
+	}
+
+}
+
+function showBestTime(){
+	bt=localStorage.getItem(bestTimeRef);
+	if (bt !== null) {
+		document.getElementById("bestTime").innerHTML=bt;
+	}
+}
+
 
 
 
