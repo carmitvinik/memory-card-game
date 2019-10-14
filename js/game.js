@@ -14,8 +14,18 @@ var playerRef = "playerName";
 var playerName= "Guest";
 var bestPlayerRef = "bestPlayer";
 
+
+// Timer Issue
+var timerStatus = null; //on off interval ref
+var milisecStat = 0; // 100 timestamps 
+var secondsStat = 0; // 1000 timestamps
+var minutesStat = 0;
+
 // This function is called whenever the user click a card
 function cardClicked(elCard) {
+	if (timerStatus === null) {
+		startTimer();
+	}
 
     // If the user clicked an already flipped card - do nothing and return from the function
     if (elCard.classList.contains('flipped')) {
@@ -54,6 +64,7 @@ function cardClicked(elCard) {
             if (TOTAL_COUPLES_COUNT === flippedCouplesCount) {
                 audioWin.play();
                	document.getElementById("replayBtn").classList.remove("hideEl");
+               	stopTimer();
                 
             }
 
@@ -64,7 +75,29 @@ function cardClicked(elCard) {
 
 }
 
+function startTimer(){
+	timerStatus=setInterval(function() {
+		if (milisecStat < 100) {
+			milisecStat++;
+		} else {
 
+			secondsStat++;
+			if (secondsStat == 60) {
+				minutesStat++;
+				secondsStat=0;
+			}
+			
+			milisecStat=0;
+		}
+		document.getElementById("timer").innerHTML=	timerText(minutesStat,secondsStat,milisecStat);
+	},10);
+
+}
+
+function stopTimer(){
+	clearInterval(timerStatus);
+
+}
 
 function hideEl(elID) {
 	document.getElementById(elID).classList.add("hideEl");
@@ -81,6 +114,14 @@ function resetGame(){
 	}
 	//reset btn elem disapear btn replay
 	hideEl("replayBtn");
+	
+	//reset timer stuff
+	timerStatus = null; //on off interval ref
+	milisecStat = 0; // 100 timestamps 
+	secondsStat = 0; // 1000 timestamps
+	minutesStat = 0;
+	document.getElementById("timer").innerHTML=	timerText(minutesStat,secondsStat,milisecStat);
+
 	
 }
 
@@ -111,3 +152,23 @@ function changeUser(){
 		return true;
 	}
 }
+
+
+
+function fixFormat2digits(x){
+	if (x<10) {
+		return "0"+x;
+	} else {
+		return x
+	}
+}
+
+function timerText(minutes,seconds,miliseconds){
+	txt=fixFormat2digits(minutes)+":"+fixFormat2digits(seconds) + ":" +fixFormat2digits(miliseconds) ;	
+	return txt;
+
+}
+
+
+
+
