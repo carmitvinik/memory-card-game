@@ -71,6 +71,7 @@ function cardClicked(elCard) {
                	stopTimer();
                	bestTimeTxt=timerText(minutesStat,secondsStat,milisecStat);
                	bestTimeAssign();
+		showBestTime();
                 
             }
 
